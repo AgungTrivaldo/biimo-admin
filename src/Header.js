@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Ensure Link is imported from react-router-dom
+import { useNavigate, Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { auth } from './firebase'; // Import Firebase auth for logging out
+import { signOut } from 'firebase/auth'; // Firebase signOut method
 
 const SidebarHeader = () => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const handleLogout = () => {
-    // Handle the logout logic (e.g., clearing session, redirecting to login page)
-    console.log('Logged out');
+    // Firebase logout logic
+    signOut(auth)
+      .then(() => {
+        // Successfully logged out
+        console.log('Logged out');
+        navigate('/login'); // Redirect to login page
+      })
+      .catch((error) => {
+        console.error('Error logging out:', error);
+      });
   };
 
   return (
@@ -38,16 +49,10 @@ const SidebarHeader = () => {
       {/* Header Section */}
       <div className="fixed left-64 top-0 right-0 flex items-center justify-end bg-white h-16 px-4 shadow">
         <button
-          onClick={() => setShowDropdown(!showDropdown)}
-          className="flex items-center focus:outline-none"
+          onClick={handleLogout}
+          className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 focus:outline-none"
         >
-          <span className="mr-2">Moni Roy</span>
-          <img
-            src="https://via.placeholder.com/40"
-            className="rounded-full w-10 h-10"
-            alt="Profile"
-          />
-          <i className="fas fa-chevron-down ml-2"></i>
+          Logout
         </button>
         {showDropdown && (
           <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded shadow-lg z-10">
