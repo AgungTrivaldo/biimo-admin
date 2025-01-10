@@ -41,6 +41,11 @@ const SidebarHeader = () => {
                   <i className="fas fa-envelope mr-2"></i>Inbox
                 </Link>
               </li>
+              <li className="px-4 py-2 hover:bg-blue-700">
+                <Link className="flex items-center" to="/Montir">
+                  <i className="fas fa-envelope mr-2"></i>List Montir
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

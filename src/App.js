@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import SidebarHeader from './Header';
 import Dashboard from './Dashboard';
 import InboxChat from './Inbox';
+import MontirDashboard from './MontirDashboard'; // Correct import
 import Login from './Login';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
@@ -34,6 +35,7 @@ function App() {
               <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/inbox" element={<InboxChat />} />
+                <Route path="/montir" element={<MontirDashboard />} />
                 {/* Default Route */}
                 <Route path="/" element={<Navigate to="/dashboard" />} />
               </Routes>

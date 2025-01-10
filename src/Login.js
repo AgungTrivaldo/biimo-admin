@@ -7,7 +7,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   // List of allowed email addresses
-  const allowedEmails = ['agungtrivaldo@gmail.com'];
+  const allowedEmails = ['agungtrivaldo@gmail.com','nazhiv.ash@gmail.com'];
 
   const handleLogin = async () => {
     const provider = new GoogleAuthProvider();
